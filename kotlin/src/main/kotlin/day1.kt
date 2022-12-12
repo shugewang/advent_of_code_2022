@@ -1,10 +1,10 @@
 import java.io.File
 
 fun readFile(fileName: String): List<String>
-        = File(fileName).absoluteFile.readLines()
+        = File(fileName).readLines()
 
 
-fun <T> List<T>.split(predicate: (T) -> Boolean): List<List<T>> =
+fun <T> List<T>.specialSplit(predicate: (T) -> Boolean): List<List<T>> =
     fold(mutableListOf(mutableListOf<T>())) { acc, t ->
         if (predicate(t)) acc.add(mutableListOf())
         else acc.last().add(t)
@@ -26,7 +26,7 @@ fun getTopThreeMostTotalCalories(totalCaloriesByElf: List<Int>): Int {
 
 fun main() {
     val caloriesRecord: List<String> = readFile("calories.txt")
-    val caloriesRecordByElf: List<List<String>> = caloriesRecord.split { it.isBlank() }
+    val caloriesRecordByElf: List<List<String>> = caloriesRecord.specialSplit { it.isBlank() }
     val totalCaloriesByElf = getTotalCalories(caloriesRecordByElf)
     val mostCalories = getMostTotalCalories(totalCaloriesByElf)
     println("most calories: $mostCalories")
