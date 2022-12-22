@@ -13,7 +13,6 @@ fun checkPartialOverlap(sectionAssignmentPair: List<String>): Boolean {
     val pair2 = sectionAssignmentPair[0].split(",")[1].split("-").map { it.toInt()}
     if (pair2[0] <= pair1[0] && pair1[0] <= pair2[0] || pair1[0] <= pair2[0] && pair2[0] <= pair1[0] ||
         pair2[1] <= pair1[1] && pair1[1] <= pair2[1] || pair1[1] <= pair2[1] && pair2[1] <= pair1[1]) {
-        println("${pair1[0]} ${pair1[1]} ${pair2[0]} ${pair2[1]}")
         return true
     }
     for (i in pair1[0]..pair1[1]) {
