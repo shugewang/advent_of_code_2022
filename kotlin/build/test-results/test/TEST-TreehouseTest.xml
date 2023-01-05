@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TreehouseTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-01-05T17:11:13" hostname="AT-ALJLQ6P5" time="0.031">
+  <properties/>
+  <testcase name="checkIfVisibleColFalseTest()" classname="TreehouseTest" time="0.028"/>
+  <testcase name="convertInputTo2DListTest()" classname="TreehouseTest" time="0.001"/>
+  <testcase name="checkIfVisibleColTrueTest()" classname="TreehouseTest" time="0.001"/>
+  <testcase name="countNumberOfInnerTrees()" classname="TreehouseTest" time="0.0"/>
+  <testcase name="checkIfVisibleRowTrueTest()" classname="TreehouseTest" time="0.001"/>
+  <testcase name="checkIfVisibleRowFalseTest()" classname="TreehouseTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
