@@ -8,11 +8,11 @@ class Treehouse (private val fileName: String) {
         return treeMap
     }
 
-    fun countInnerTrees(): Int {
+    fun countEdgeTrees(): Int {
         val totalTrees = treeMap.size*treeMap[0].size
         val edgeTrees = treeMap.size*2 + treeMap[0].size*2 - 4
         val innerTrees = totalTrees - edgeTrees
-        return innerTrees
+        return edgeTrees
     }
 
     fun checkIfVisibleByRow(rowIndex: Int, colIndex: Int): Boolean {
@@ -31,6 +31,26 @@ class Treehouse (private val fileName: String) {
         val belowTrees = mutableListOf<Int>()
         treeMap.slice(rowIndex + 1 until treeMap.size).map { belowTrees.add(it[colIndex])}
         return tree > aboveTrees.max() || tree > belowTrees.max()
+    }
+
+    fun checkIfVisible(rowIndex: Int, colIndex: Int): Boolean {
+        return checkIfVisibleByCol(rowIndex, colIndex) || checkIfVisibleByRow(rowIndex, colIndex)
+    }
+
+    fun countNumberOfVisibleInnerTrees(): Int {
+        var visibleInnerTrees = 0
+        for (row in 1..treeMap.size-2) {
+            for (col in 1.. treeMap[row].size-2) {
+                if (checkIfVisible(row, col)) {
+                    visibleInnerTrees++
+                }
+            }
+        }
+        return visibleInnerTrees
+    }
+
+    fun countNumberOfAllVisibleTrees(edgeTrees: Int, visibleInnerTrees: Int): Int {
+        return edgeTrees + visibleInnerTrees
     }
 
 }

@@ -11,9 +11,9 @@ class TreehouseTest {
     }
 
     @Test
-    fun countNumberOfInnerTrees() {
+    fun countNumberOfEdgeTrees() {
         treehouse.convertMapTo2DList()
-        assertEquals(9, treehouse.countInnerTrees())
+        assertEquals(16, treehouse.countEdgeTrees())
     }
 
     @Test
@@ -38,5 +38,25 @@ class TreehouseTest {
     fun checkIfVisibleColFalseTest() {
         treehouse.convertMapTo2DList()
         assertEquals(false, treehouse.checkIfVisibleByCol(3, 1))
+    }
+
+    @Test
+    fun checkIfVisibleRowAndColTest() {
+        treehouse.convertMapTo2DList()
+        assertEquals(true, treehouse.checkIfVisible(1,2))
+    }
+
+    @Test
+    fun countNumberOfVisibleInnerTreesTest() {
+        treehouse.convertMapTo2DList()
+        assertEquals(5, treehouse.countNumberOfVisibleInnerTrees())
+    }
+
+    @Test
+    fun countNumberOfAllVisibleTreesTest() {
+        treehouse.convertMapTo2DList()
+        val innerTrees = treehouse.countNumberOfVisibleInnerTrees()
+        val edgeTrees = treehouse.countEdgeTrees()
+        assertEquals(21, treehouse.countNumberOfAllVisibleTrees(innerTrees, edgeTrees))
     }
 }
