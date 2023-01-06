@@ -7,15 +7,15 @@ class Filesystem (private val fileName: String) {
         return input.map { it.split(" ").takeLast(1).joinToString()}
     }
 
-    fun createListOfDirectoryClasses(): MutableList<Directory> {
-
-        var directoriesList = mutableListOf<Directory>()
-
-        for (directory in directories) {
-            directoriesList.add(Directory(directory))
-        }
-        return directoriesList
-    }
+//    fun createListOfDirectoryClasses(): MutableList<Directory> {
+//
+//        var directoriesList = mutableListOf<Directory>()
+//
+//        for (directory in directories) {
+//            directoriesList.add(Directory(directory))
+//        }
+//        return directoriesList
+//    }
 
     fun separateIntoBlocksOfDirectories(): List<List<String>> {
         var input = File(fileName).readLines().filterNot { it.contains("..") }
@@ -30,7 +30,17 @@ class Filesystem (private val fileName: String) {
         return blocks.drop(1)
     }
 
-    class Directory (var name: String){
+    fun createMapOfDirectoriesAndContent(): MutableMap<String, List<String>> {
+        var input = separateIntoBlocksOfDirectories()
+        var map = mutableMapOf<String, List<String>>()
+        for (list in input) {
+            map[list[0]] = list.subList(2,list.size)
+        }
+
+        return map
+    }
+
+    class Directory (var name: String, var content: List<String>){
 
 
     }

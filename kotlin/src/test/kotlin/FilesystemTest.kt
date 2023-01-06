@@ -9,16 +9,16 @@ class FilesystemTest {
         assertEquals(expected, filesystem.extractDirectories())
     }
 
-    @Test
-    fun createListOfDirectoryClassesTest() {
-//        val expected = listOf(Filesystem.Directory("/"), Filesystem.Directory("a"), Filesystem.Directory("e"), Filesystem.Directory("d"))
-        val expected = listOf("/", "a", "e", "d")
-        val actual = mutableListOf<String>()
-        for (directory in filesystem.createListOfDirectoryClasses()) {
-            actual.add(directory.name)
-        }
-        assertEquals(expected, actual)
-    }
+//    @Test
+//    fun createListOfDirectoryClassesTest() {
+////        val expected = listOf(Filesystem.Directory("/"), Filesystem.Directory("a"), Filesystem.Directory("e"), Filesystem.Directory("d"))
+//        val expected = listOf("/", "a", "e", "d")
+//        val actual = mutableListOf<String>()
+//        for (directory in filesystem.createListOfDirectoryClasses()) {
+//            actual.add(directory.name)
+//        }
+//        assertEquals(expected, actual)
+//    }
 
     @Test
     fun separateBlockOfDirectoriesAndTheirContentsTest() {
@@ -27,8 +27,10 @@ class FilesystemTest {
     }
 
     @Test
-    fun createNewDirectoryTest() {
+    fun createMapOfDirectoriesTest() {
+        val expected = mutableMapOf("$ cd /" to listOf("dir a", "14848514 b.txt", "8504156 c.dat", "dir d"), "\$ cd a" to listOf("dir e", "29116 f", "2557 g", "62596 h.lst"), "$ cd e" to listOf("584 i"), "$ cd d" to listOf("4060174 j", "8033020 d.log", "5626152 d.ext", "7214296 k"))
 
+        assertEquals(expected, filesystem.createMapOfDirectoriesAndContent())
     }
 
 
