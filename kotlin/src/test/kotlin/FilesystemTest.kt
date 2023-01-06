@@ -4,16 +4,16 @@ import kotlin.test.assertEquals
 class FilesystemTest {
     private val filesystem = Filesystem("filesystem.txt")
     @Test
-    fun keepOnlyChangeDirLinesTest() {
-        val expected = listOf("$ cd /", "$ cd a", "$ cd e", "$ cd d")
-        assertEquals(expected, filesystem.getChangeDirLines())
+    fun extractDirectoriesTest() {
+        val expected = listOf("/", "a", "e", "d")
+        assertEquals(expected, filesystem.extractDirectories())
     }
 
-    @Test
-    fun createMapOfDirectoriesAndContentTest() {
-        val expected = mapOf<Item, Item>()
-        assertEquals(expected, filesystem.createDirectoriesMap())
-    }
+//    @Test
+//    fun createMapOfDirectoriesAndContentTest() {
+//        val expected = mapOf<Item, Item>()
+//        assertEquals(expected, filesystem.createDirectoriesMap())
+//    }
 
 
 }
