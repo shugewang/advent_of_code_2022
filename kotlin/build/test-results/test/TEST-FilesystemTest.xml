@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="FilesystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-06T14:23:58" hostname="AT-ALJLQ6P5" time="0.032">
+<testsuite name="FilesystemTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-01-06T16:36:16" hostname="AT-ALJLQ6P5" time="0.02">
   <properties/>
-  <testcase name="extractDirectoriesTest()" classname="FilesystemTest" time="0.032"/>
+  <testcase name="separateBlockOfDirectoriesAndTheirContentsTest()" classname="FilesystemTest" time="0.017"/>
+  <testcase name="createListOfDirectoryClassesTest()" classname="FilesystemTest" time="0.002"/>
+  <testcase name="extractDirectoriesTest()" classname="FilesystemTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
