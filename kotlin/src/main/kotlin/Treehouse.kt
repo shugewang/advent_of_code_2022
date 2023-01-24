@@ -64,5 +64,18 @@ class Treehouse (private val fileName: String) {
         return if (checkIfEdge(rowIndex, colIndex)) 0 else null
     }
 
+    fun getUnblockedReviewToLeft(rowIndex: Int, colIndex: Int): Int {
+        var unblocked = 0
+        if (!checkIfEdge(rowIndex, colIndex)) {
+            val leftTreesReversed = treeMap[rowIndex].slice(0 until colIndex).reversed()
+            for (tree in leftTreesReversed) {
+                if (tree >= treeMap[rowIndex][colIndex]) {
+                    unblocked ++
+                }
+            }
+        }
+        return unblocked
+    }
+
 
 }
