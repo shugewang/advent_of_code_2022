@@ -61,8 +61,20 @@ class TreehouseTest {
     }
 
     @Test
-    fun ifEdgeReturnZeroScenicScore() {
+    fun ifTopEdgeReturnZeroScenicScore() {
         treehouse.convertMapTo2DList()
         assertEquals(0, treehouse.getScenicScore(0, 0))
+    }
+
+    @Test
+    fun ifBottomEdgeReturnZeroScenicScore() {
+        treehouse.convertMapTo2DList()
+        assertEquals(0, treehouse.getScenicScore(4, 2))
+    }
+
+    @Test
+    fun ifRightEdgeReturnZeroScenicScore() {
+        treehouse.convertMapTo2DList()
+        assertEquals(0, treehouse.getScenicScore(2, 4))
     }
 }
