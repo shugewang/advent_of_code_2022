@@ -60,7 +60,11 @@ class Treehouse (private val fileName: String) {
         return false
     }
     fun getScenicScore(rowIndex: Int, colIndex: Int): Int? {
-        return if (checkIfEdge(rowIndex, colIndex)) 0 else null
+        if (checkIfEdge(rowIndex, colIndex)) {
+            return 0
+        } else {
+            return getUnblockedViewToLeft(rowIndex, colIndex)*getUnblockedViewToRight(rowIndex, colIndex)*getUnblockedViewUp(rowIndex, colIndex)*getUnblockedViewDown(rowIndex, colIndex)
+        }
     }
 
     private fun getNumberOfVisibleTrees(trees: List<Int>, rowIndex: Int, colIndex: Int): Int{
