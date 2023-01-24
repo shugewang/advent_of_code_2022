@@ -54,12 +54,14 @@ class Treehouse (private val fileName: String) {
         return edgeTrees + visibleInnerTrees
     }
 
-    fun getScenicScore(rowIndex: Int, colIndex: Int): Int? {
+    private fun checkIfEdge(rowIndex: Int, colIndex: Int): Boolean {
         if (rowIndex == 0 || colIndex == 0 || rowIndex == treeMap.size - 1 || colIndex == treeMap[rowIndex].size - 1) {
-            return 0
-        } else {
-            return null
+            return true
         }
+        return false
+    }
+    fun getScenicScore(rowIndex: Int, colIndex: Int): Int? {
+        return if (checkIfEdge(rowIndex, colIndex)) 0 else null
     }
 
 
