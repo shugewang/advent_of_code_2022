@@ -59,4 +59,10 @@ class TreehouseTest {
         val edgeTrees = treehouse.countEdgeTrees()
         assertEquals(21, treehouse.countNumberOfAllVisibleTrees(innerTrees, edgeTrees))
     }
+
+//    @Test
+//    fun ifEdgeReturnZeroScenicScore() {
+//        treehouse.convertMapTo2DList()
+//        assertEquals(0, treehouse.getScenicScore(0, 0))
+//    }
 }

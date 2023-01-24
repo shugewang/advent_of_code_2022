@@ -33,9 +33,9 @@ class FilesystemTest {
     }
 
     @Test
-    fun createFileClasses() {
+    fun createListOfDirectoriesTest() {
         val expected = mutableListOf<Filesystem.Directory>(Filesystem.Directory("/"), Filesystem.Directory("a"), Filesystem.Directory("e"), Filesystem.Directory("d"))
-        assertEquals(expected, filesystem.convertFileStringIntoClasses())
+        assertEquals(expected, filesystem.createListOfDirectories())
     }
 
 

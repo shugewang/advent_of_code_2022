@@ -40,14 +40,29 @@ class Filesystem (private val fileName: String) {
         return map
     }
 
-    fun convertFileStringIntoClasses(): MutableList<Directory> {
+    fun createListOfDirectories(): MutableList<Directory> {
         var mapOfDirectoriesAndContent = createMapOfDirectoriesAndContent()
         var listOfDirectoryClasses = mutableListOf<Directory>()
         for ((key, value) in mapOfDirectoriesAndContent) {
             listOfDirectoryClasses.add(Directory(key))
-//            for (item in value) {
-//                listOfDirectoryClasses[listOfDirectoryClasses.lastIndex].addToDirectoryContent(item)
-//            }
+            for (ele in value) {
+                if (ele[0].isDigit()) {
+                    listOfDirectoryClasses[listOfDirectoryClasses.lastIndex].addToDirectoryContent(
+                        FileItem(
+                            ele.split(" ")[1],
+                            ele.split(" ")[0].toInt()
+                        )
+                    )
+                }
+                else {
+                    listOfDirectoryClasses[listOfDirectoryClasses.lastIndex].addToDirectoryContent(FileItem(
+                        ele.split(" ")[1],
+                        0
+                    ))
+                }
+
+
+            }
         }
         return listOfDirectoryClasses
     }
@@ -69,7 +84,7 @@ class Filesystem (private val fileName: String) {
         }
     }
 
-    class FileItem (){
+    class FileItem (name: String, size: Int) : Item(name){
 
     }
 
