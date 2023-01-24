@@ -103,5 +103,11 @@ class TreehouseTest {
         assertEquals(2, treehouse.getUnblockedViewDown(1, 2))
     }
 
+    @Test
+    fun getScenicScoreForInnerTrees() {
+        treehouse.treeMap = listOf(listOf(3,0,3,7,3), listOf(2,5,5,1,2), listOf(6,5,3,3,2), listOf(3,3,5,4,9), listOf(3,5,3,9,0))
+        assertEquals(4, treehouse.getScenicScore(1, 2))
+    }
+
 
 }
