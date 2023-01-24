@@ -88,7 +88,7 @@ class TreehouseTest {
     @Test
     fun getHighestScenicScoreTest() {
         treehouse.treeMap = listOf(listOf(3,0,3,7,3), listOf(2,5,5,1,2), listOf(6,5,3,3,2), listOf(3,3,5,4,9), listOf(3,5,3,9,0))
-        assertEquals(8, getHighestScenicScore())
+        assertEquals(8, treehouse.getHighestScenicScore())
     }
 
 

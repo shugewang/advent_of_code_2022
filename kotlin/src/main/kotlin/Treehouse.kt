@@ -60,7 +60,7 @@ class Treehouse (private val fileName: String) {
         return false
     }
 
-    fun getScenicScore(rowIndex: Int, colIndex: Int): Int? {
+    fun getScenicScore(rowIndex: Int, colIndex: Int): Int {
         if (checkIfEdge(rowIndex, colIndex)) {
             return 0
         } else {
@@ -71,7 +71,7 @@ class Treehouse (private val fileName: String) {
     private fun getNumberOfVisibleTrees(trees: List<Int>, rowIndex: Int, colIndex: Int): Int {
         var unblocked = 0
         for (tree in trees) {
-            if (tree == treeMap[rowIndex][colIndex]) {
+            if (tree >= treeMap[rowIndex][colIndex]) {
                 unblocked++
                 return unblocked
             } else if (tree < treeMap[rowIndex][colIndex]) {
@@ -96,7 +96,22 @@ class Treehouse (private val fileName: String) {
         val belowTrees = mutableListOf<Int>()
         treeMap.slice(rowIndex + 1 until treeMap.size).map { belowTrees.add(it[colIndex]) }
         visibleTreesCount.add(getNumberOfVisibleTrees(belowTrees, rowIndex, colIndex))
-
+        println("r" +rightTrees)
+        println(visibleTreesCount)
         return visibleTreesCount
+    }
+
+    fun getHighestScenicScore(): Int {
+        var scenicScore = 0
+        for (row in treeMap.indices) {
+            for (col in treeMap[row].indices) {
+                println(treeMap[row][col])
+                if (getScenicScore(row, col) > scenicScore) {
+                    scenicScore = getScenicScore(row, col)
+
+                }
+            }
+        }
+        return scenicScore
     }
 }
