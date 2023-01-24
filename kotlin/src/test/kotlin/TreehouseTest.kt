@@ -85,4 +85,22 @@ class TreehouseTest {
         assertEquals(1, treehouse.getUnblockedReviewToLeft(1, 2))
     }
 
+    @Test
+    fun getUnblockedViewToRightTest() {
+        treehouse.treeMap = listOf(listOf(3,0,3,7,3), listOf(2,5,5,1,2), listOf(6,5,3,3,2), listOf(3,3,5,4,9), listOf(3,5,3,9,0))
+        assertEquals(2, treehouse.getUnblockedReviewToRight(1, 2))
+    }
+
+    @Test
+    fun getUnblockedViewUpTest() {
+        treehouse.treeMap = listOf(listOf(3,0,3,7,3), listOf(2,5,5,1,2), listOf(6,5,3,3,2), listOf(3,3,5,4,9), listOf(3,5,3,9,0))
+        assertEquals(1, treehouse.getUnblockedReviewUp(1, 2))
+    }
+
+    @Test
+    fun getUnblockedViewDownTest() {
+        treehouse.treeMap = listOf(listOf(3,0,3,7,3), listOf(2,5,5,1,2), listOf(6,5,3,3,2), listOf(3,3,5,4,9), listOf(3,5,3,9,0))
+        assertEquals(2, treehouse.getUnblockedReviewDown(1, 2))
+    }
+
 }
