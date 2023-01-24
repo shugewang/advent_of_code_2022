@@ -103,4 +103,5 @@ class TreehouseTest {
         assertEquals(2, treehouse.getUnblockedViewDown(1, 2))
     }
 
+
 }

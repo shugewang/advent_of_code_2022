@@ -63,70 +63,54 @@ class Treehouse (private val fileName: String) {
         return if (checkIfEdge(rowIndex, colIndex)) 0 else null
     }
 
-    fun getUnblockedViewToLeft(rowIndex: Int, colIndex: Int): Int {
+    private fun getNumberOfVisibleTrees(trees: List<Int>, rowIndex: Int, colIndex: Int): Int{
         var unblocked = 0
-        if (!checkIfEdge(rowIndex, colIndex)) {
-            val leftTreesReversed = treeMap[rowIndex].slice(0 until colIndex).reversed()
-            for (tree in leftTreesReversed) {
-                if (tree == treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                    return unblocked
-                } else if (tree < treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                }
+        for (tree in trees) {
+            if (tree == treeMap[rowIndex][colIndex]) {
+                unblocked++
+                return unblocked
+            } else if (tree < treeMap[rowIndex][colIndex]) {
+                unblocked++
             }
         }
         return unblocked
+    }
+    fun getUnblockedViewToLeft(rowIndex: Int, colIndex: Int): Int {
+        var visibleTreesCount = 0
+        if (!checkIfEdge(rowIndex, colIndex)) {
+            val leftTreesReversed = treeMap[rowIndex].slice(0 until colIndex).reversed()
+            visibleTreesCount = getNumberOfVisibleTrees(leftTreesReversed, rowIndex, colIndex)
+        }
+        return visibleTreesCount
     }
 
     fun getUnblockedViewToRight(rowIndex: Int, colIndex: Int): Int {
-        var unblocked = 0
+        var visibleTreesCount = 0
         if (!checkIfEdge(rowIndex, colIndex)) {
             val rightTrees = treeMap[rowIndex].slice(colIndex + 1 until treeMap[colIndex].size)
-            for (tree in rightTrees) {
-                if (tree == treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                    return unblocked
-                } else if (tree < treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                }
-            }
+            visibleTreesCount = getNumberOfVisibleTrees(rightTrees, rowIndex, colIndex)
         }
-        return unblocked
+        return visibleTreesCount
     }
 
     fun getUnblockedViewUp(rowIndex: Int, colIndex: Int): Int {
-        var unblocked = 0
+        var visibleTreesCount = 0
         if (!checkIfEdge(rowIndex, colIndex)) {
             val aboveTrees = mutableListOf<Int>()
             treeMap.take(rowIndex).map { aboveTrees.add(it[colIndex])}
-            for (tree in aboveTrees.reversed()) {
-                if (tree == treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                    return unblocked
-                } else if (tree < treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                }
-            }
+            visibleTreesCount = getNumberOfVisibleTrees(aboveTrees.reversed(), rowIndex, colIndex)
         }
-        return unblocked
+        return visibleTreesCount
     }
 
     fun getUnblockedViewDown(rowIndex: Int, colIndex: Int): Int {
-        var unblocked = 0
+        var visibleTreesCount = 0
         if (!checkIfEdge(rowIndex, colIndex)) {
             val belowTrees = mutableListOf<Int>()
             treeMap.slice(rowIndex + 1 until treeMap.size).map { belowTrees.add(it[colIndex])}
-            for (tree in belowTrees) {
-                if (tree == treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                    return unblocked
-                } else if (tree < treeMap[rowIndex][colIndex]) {
-                    unblocked++
-                }
-            }
+            visibleTreesCount = getNumberOfVisibleTrees(belowTrees, rowIndex, colIndex)
         }
-        return unblocked
+        return visibleTreesCount
     }
 
 
