@@ -1,4 +1,4 @@
-// day 8
+// day 8 - https://adventofcode.com/2022/day/8
 import java.io.File
 
 class Treehouse (private val fileName: String) {
@@ -11,9 +11,7 @@ class Treehouse (private val fileName: String) {
 
     fun countEdgeTrees(): Int {
         val totalTrees = treeMap.size * treeMap[0].size
-        val edgeTrees = treeMap.size * 2 + treeMap[0].size * 2 - 4
-        val innerTrees = totalTrees - edgeTrees
-        return edgeTrees
+        return treeMap.size * 2 + treeMap[0].size * 2 - 4
     }
 
     fun checkIfVisibleByRow(rowIndex: Int, colIndex: Int): Boolean {
@@ -96,8 +94,6 @@ class Treehouse (private val fileName: String) {
         val belowTrees = mutableListOf<Int>()
         treeMap.slice(rowIndex + 1 until treeMap.size).map { belowTrees.add(it[colIndex]) }
         visibleTreesCount.add(getNumberOfVisibleTrees(belowTrees, rowIndex, colIndex))
-        println("r" +rightTrees)
-        println(visibleTreesCount)
         return visibleTreesCount
     }
 
@@ -105,7 +101,6 @@ class Treehouse (private val fileName: String) {
         var scenicScore = 0
         for (row in treeMap.indices) {
             for (col in treeMap[row].indices) {
-                println(treeMap[row][col])
                 if (getScenicScore(row, col) > scenicScore) {
                     scenicScore = getScenicScore(row, col)
 
